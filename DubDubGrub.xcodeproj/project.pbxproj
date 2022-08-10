@@ -16,6 +16,7 @@
 		07B2B4DF28A32A0400E7FA30 /* LocationMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B2B4DE28A32A0400E7FA30 /* LocationMapView.swift */; };
 		07B2B4E128A32A2300E7FA30 /* LocationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B2B4E028A32A2300E7FA30 /* LocationListView.swift */; };
 		07B2B4E328A32A3000E7FA30 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B2B4E228A32A3000E7FA30 /* ProfileView.swift */; };
+		07CE0A9B28A45B56007FADF5 /* LocationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CE0A9A28A45B56007FADF5 /* LocationDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		07B2B4DE28A32A0400E7FA30 /* LocationMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapView.swift; sourceTree = "<group>"; };
 		07B2B4E028A32A2300E7FA30 /* LocationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListView.swift; sourceTree = "<group>"; };
 		07B2B4E228A32A3000E7FA30 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		07CE0A9A28A45B56007FADF5 /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				07B2B4DE28A32A0400E7FA30 /* LocationMapView.swift */,
 				07B2B4E028A32A2300E7FA30 /* LocationListView.swift */,
 				07B2B4E228A32A3000E7FA30 /* ProfileView.swift */,
+				07CE0A9A28A45B56007FADF5 /* LocationDetailView.swift */,
 			);
 			path = DubDubGrub;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 				07B2B4DA28A3296700E7FA30 /* Color+Extension.swift in Sources */,
 				07B2B4DF28A32A0400E7FA30 /* LocationMapView.swift in Sources */,
 				07B2B4E128A32A2300E7FA30 /* LocationListView.swift in Sources */,
+				07CE0A9B28A45B56007FADF5 /* LocationDetailView.swift in Sources */,
 				07B2B4DD28A329C800E7FA30 /* AppTabView.swift in Sources */,
 				07B2B4E328A32A3000E7FA30 /* ProfileView.swift in Sources */,
 				07B2B4C828A326FA00E7FA30 /* DubDubGrubApp.swift in Sources */,
