@@ -15,13 +15,9 @@ struct LocationDetailView: View {
     
     var body: some View {
         VStack(spacing: 16) {
-            Image("default-banner-asset")
-                .resizable()
-                .scaledToFill()
-                .frame(height: 120)
+            BannerImageView(imageName: "default-banner-asset")
             HStack {
-                Label("983 Dr. Ricardo Odriozola", systemImage: "mappin.and.ellipse")
-                    .font(.caption)
+                AddressView(address: "983 Dr. Ricardo Odriozola")
                 
                 Spacer()
             }
@@ -29,10 +25,7 @@ struct LocationDetailView: View {
             .navigationBarTitleDisplayMode(.inline)
             .padding(.horizontal)
             
-            Text("Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.")
-                .lineLimit(3)
-                .minimumScaleFactor(0.75)
-                .padding(.horizontal)
+            DescriptionView(text: "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.")
             
             ZStack {
                 Capsule()
@@ -68,10 +61,10 @@ struct LocationDetailView: View {
             
             ScrollView {
                 LazyVGrid(columns: columns) {
+                    FirstNameAvatarView(firstName: "Benjamin")
+                    FirstNameAvatarView(firstName: "Diana")
                     FirstNameAvatarView(firstName: "Oscar")
-                    FirstNameAvatarView(firstName: "Fabian")
-                    FirstNameAvatarView(firstName: "Cristaldo")
-                    FirstNameAvatarView(firstName: "Guzman")
+                    FirstNameAvatarView(firstName: "Yoshi")
                 }
             }
             
@@ -120,5 +113,38 @@ struct FirstNameAvatarView: View {
                 .minimumScaleFactor(0.75)
         }
         
+    }
+}
+
+struct BannerImageView: View {
+    
+    var imageName: String
+    
+    var body: some View {
+        Image(imageName)
+            .resizable()
+            .scaledToFill()
+            .frame(height: 120)
+    }
+}
+
+struct AddressView: View {
+    
+    var address: String
+    
+    var body: some View {
+        Label(address, systemImage: "mappin.and.ellipse")
+            .font(.caption)
+    }
+}
+
+struct DescriptionView: View {
+    
+    var text: String
+    var body: some View {
+        Text(text)
+            .lineLimit(3)
+            .minimumScaleFactor(0.75)
+            .padding(.horizontal)
     }
 }
