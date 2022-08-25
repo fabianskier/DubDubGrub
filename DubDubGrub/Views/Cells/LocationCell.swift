@@ -19,23 +19,23 @@ struct LocationCell: View {
                 .frame(width: 80, height: 80)
                 .clipShape(Circle())
                 .padding(.vertical, 8)
-            
-            VStack(alignment: .leading) {
-                Text(location.name)
-                    .font(.title2)
-                    .fontWeight(.semibold)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.75)
+            GeometryReader { geometry in
+                VStack(alignment: .leading) {
+                    Text(location.name)
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.75)
                     
-                HStack {
-                    AvatarView(size: 35)
-                    AvatarView(size: 35)
-                    AvatarView(size: 35)
-                    AvatarView(size: 35)
-                    AvatarView(size: 35)
+                    HStack {
+                        AvatarView(size: 35)
+                        AvatarView(size: 35)
+                        AvatarView(size: 35)
+                        AvatarView(size: 35)
+                        AvatarView(size: 35)
+                    }
                 }
-            }
-            .padding(.leading)
+            }.frame(height: 80)
         }
     }
 }
