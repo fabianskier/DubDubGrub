@@ -77,8 +77,6 @@
 		074C163328B6AFD600F93FF8 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				07B2B4D928A3296700E7FA30 /* Color+Extension.swift */,
-				07F6153F28B5BFEB009641B2 /* View+Extension.swift */,
 				07B2B4DB28A3296B00E7FA30 /* Extensions */,
 				074C163428B6AFE300F93FF8 /* Managers */,
 				074C163828B6B0AD00F93FF8 /* Constants.swift */,
@@ -99,6 +97,7 @@
 		074C163E28B6E99C00F93FF8 /* LocationMapView */ = {
 			isa = PBXGroup;
 			children = (
+				07B2B4DE28A32A0400E7FA30 /* LocationMapView.swift */,
 				074C163F28B6E9B300F93FF8 /* LocationMapViewModel.swift */,
 			);
 			path = LocationMapView;
@@ -154,6 +153,8 @@
 		07B2B4DB28A3296B00E7FA30 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				07F6153F28B5BFEB009641B2 /* View+Extension.swift */,
+				07B2B4D928A3296700E7FA30 /* Color+Extension.swift */,
 				074C163A28B6E1A700F93FF8 /* CKRecord+Extension.swift */,
 			);
 			path = Extensions;
@@ -173,7 +174,6 @@
 		07F6154428B5C2BC009641B2 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				07B2B4DE28A32A0400E7FA30 /* LocationMapView.swift */,
 				074C163E28B6E99C00F93FF8 /* LocationMapView */,
 				07B2B4DC28A329C800E7FA30 /* AppTabView.swift */,
 				07CE0A9A28A45B56007FADF5 /* LocationDetailView.swift */,
