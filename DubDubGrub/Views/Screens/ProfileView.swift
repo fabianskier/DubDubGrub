@@ -15,6 +15,8 @@ struct ProfileView: View {
     @State private var bio                  = ""
     @State private var avatar               = PlaceholderImage.avatar
     @State private var isShowingPhotoPicker = false
+    @State private var alertItem: AlertItem?
+    @FocusState var dismissKeyboard: Bool
     
     var body: some View {
         VStack {
@@ -45,6 +47,20 @@ struct ProfileView: View {
                 CharacterRemainView(currentCount: bio.count)
                 
                 TextEditor(text: $bio)
+                    .focused($dismissKeyboard)
+                    .toolbar {
+                        ToolbarItem(placement: .keyboard) {
+                            HStack {
+                                Spacer()
+                                Button {
+                                    dismissKeyboard.toggle()
+                                } label: {
+                                    Image(systemName: "keyboard.chevron.compact.down")
+                                        .foregroundColor(Color("AccentColor"))
+                                }
+                            }
+                        }
+                    }
                     .frame(height: 100)
                     .overlay(RoundedRectangle(cornerRadius: 8)
                         .stroke(Color.secondary, lineWidth: 1))
@@ -55,14 +71,35 @@ struct ProfileView: View {
             Spacer()
             
             Button {
-                
+                createProfile()
             } label: {
                 DDGButton(title: "Create Profile")
             }
+            .padding(.bottom)
         }
         .navigationTitle("Profile")
+        .alert(item: $alertItem, content: { alertItem in
+            Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
+        })
         .sheet(isPresented: $isShowingPhotoPicker) {
             PhotoPicker(image: $avatar)
+        }
+    }
+    
+    func isValidProfile() -> Bool {
+        guard !firstName.isEmpty,
+              !lastName.isEmpty,
+              !companyName.isEmpty,
+              !bio.isEmpty,
+              avatar != PlaceholderImage.avatar,
+              bio.count < 100 else { return false }
+        return true
+    }
+    
+    func createProfile() {
+        guard isValidProfile() else {
+            alertItem = AlertContext.invalidProfile
+            return
         }
     }
 }
