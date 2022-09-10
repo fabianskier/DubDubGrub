@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct ProfileView: View {
     
@@ -100,6 +101,44 @@ struct ProfileView: View {
         guard isValidProfile() else {
             alertItem = AlertContext.invalidProfile
             return
+        }
+        
+        let profileRecord = CKRecord(recordType: RecordType.profile)
+        profileRecord[DDGProfile.kFirstName]    = firstName
+        profileRecord[DDGProfile.kLastName]     = lastName
+        profileRecord[DDGProfile.kCompanyName]  = companyName
+        profileRecord[DDGProfile.kBio]          = bio
+        profileRecord[DDGProfile.kAvatar]       = avatar.convertToCKAsset()
+        
+        CKContainer.default().fetchUserRecordID { recordID, error in
+            guard let recordID = recordID, error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            
+            CKContainer.default().privateCloudDatabase.fetch(withRecordID: recordID) { userRecord, error in
+                guard let userRecord = userRecord, error == nil else {
+                    print(error!.localizedDescription)
+                    return
+                }
+                
+                userRecord["userProfile"] = CKRecord.Reference(recordID: profileRecord.recordID, action: .none)
+                
+                let operation = CKModifyRecordsOperation(recordsToSave: [userRecord, profileRecord])
+                operation.qualityOfService = .userInteractive
+                
+                operation.modifyRecordsResultBlock = { result in
+                    switch result {
+                    case .success:
+                        print("Succesfully created and uploaded profile to CloudKit")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                
+                CKContainer.default().publicCloudDatabase.add(operation)
+            }
+
         }
     }
 }
