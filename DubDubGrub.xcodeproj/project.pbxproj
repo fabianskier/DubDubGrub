@@ -29,6 +29,7 @@
 		07B7A25528BC46FE003EEFC3 /* XDismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A25428BC46FE003EEFC3 /* XDismissButton.swift */; };
 		07CE0A9B28A45B56007FADF5 /* LocationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CE0A9A28A45B56007FADF5 /* LocationDetailView.swift */; };
 		07D2EE9F28C3DDCF00FC4695 /* UIIamge+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D2EE9E28C3DDCF00FC4695 /* UIIamge+Extension.swift */; };
+		07DF0BB828CE251200BFD518 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF0BB728CE251200BFD518 /* ProfileViewModel.swift */; };
 		07F6153A28B5B483009641B2 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F6153928B5B483009641B2 /* LocationCell.swift */; };
 		07F6153C28B5B4B7009641B2 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F6153B28B5B4B7009641B2 /* AvatarView.swift */; };
 		07F6153E28B5BFB2009641B2 /* CustomModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F6153D28B5BFB2009641B2 /* CustomModifiers.swift */; };
@@ -64,6 +65,7 @@
 		07B7A25428BC46FE003EEFC3 /* XDismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDismissButton.swift; sourceTree = "<group>"; };
 		07CE0A9A28A45B56007FADF5 /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
 		07D2EE9E28C3DDCF00FC4695 /* UIIamge+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIIamge+Extension.swift"; sourceTree = "<group>"; };
+		07DF0BB728CE251200BFD518 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		07F6153928B5B483009641B2 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		07F6153B28B5B4B7009641B2 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		07F6153D28B5BFB2009641B2 /* CustomModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifiers.swift; sourceTree = "<group>"; };
@@ -191,6 +193,15 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		07DF0BB628CE24F500BFD518 /* ProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				07B2B4E228A32A3000E7FA30 /* ProfileView.swift */,
+				07DF0BB728CE251200BFD518 /* ProfileViewModel.swift */,
+			);
+			path = ProfileView;
+			sourceTree = "<group>";
+		};
 		07F6154328B5C2A2009641B2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,11 +216,11 @@
 		07F6154428B5C2BC009641B2 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				07DF0BB628CE24F500BFD518 /* ProfileView */,
 				074C163E28B6E99C00F93FF8 /* LocationMapView */,
 				07B2B4DC28A329C800E7FA30 /* AppTabView.swift */,
 				07CE0A9A28A45B56007FADF5 /* LocationDetailView.swift */,
 				07B2B4E028A32A2300E7FA30 /* LocationListView.swift */,
-				07B2B4E228A32A3000E7FA30 /* ProfileView.swift */,
 				07B7A24F28BC3E33003EEFC3 /* OnboardingView.swift */,
 			);
 			path = Screens;
@@ -320,6 +331,7 @@
 				07F6153E28B5BFB2009641B2 /* CustomModifiers.swift in Sources */,
 				07B2B4DF28A32A0400E7FA30 /* LocationMapView.swift in Sources */,
 				07D2EE9F28C3DDCF00FC4695 /* UIIamge+Extension.swift in Sources */,
+				07DF0BB828CE251200BFD518 /* ProfileViewModel.swift in Sources */,
 				074C164028B6E9B300F93FF8 /* LocationMapViewModel.swift in Sources */,
 				07B2B4E128A32A2300E7FA30 /* LocationListView.swift in Sources */,
 				07F6154D28B6A885009641B2 /* MockData.swift in Sources */,
