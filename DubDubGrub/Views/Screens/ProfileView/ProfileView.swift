@@ -64,7 +64,7 @@ struct ProfileView: View {
             Spacer()
             
             Button {
-                //                                createProfile()
+                                viewModel.createProfile()
             } label: {
                 DDGButton(title: "Create Profile")
             }
@@ -79,12 +79,6 @@ struct ProfileView: View {
             PhotoPicker(image: $viewModel.avatar)
         }
     }
-    
-    
-    
-    
-    
-    
 }
 
 struct ProfileView_Previews: PreviewProvider {

@@ -16,7 +16,9 @@ struct AppTabView: View {
             LocationMapView().tabItem{ Label("Map", systemImage: "map") }
             LocationListView().tabItem{ Label("Locations", systemImage: "building") }
             NavigationView { ProfileView() }.tabItem{ Label("Profile", systemImage: "person") }
-        }.tint(Color("AccentColor"))
+        }
+        .onAppear { CloudKitManager.shared.getUserRecord() } 
+        .tint(Color("AccentColor"))
     }
 }
 
