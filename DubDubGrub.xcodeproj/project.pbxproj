@@ -30,6 +30,7 @@
 		07CE0A9B28A45B56007FADF5 /* LocationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CE0A9A28A45B56007FADF5 /* LocationDetailView.swift */; };
 		07D2EE9F28C3DDCF00FC4695 /* UIIamge+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D2EE9E28C3DDCF00FC4695 /* UIIamge+Extension.swift */; };
 		07DF0BB828CE251200BFD518 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF0BB728CE251200BFD518 /* ProfileViewModel.swift */; };
+		07DF0BBC28CF7AF300BFD518 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF0BBB28CF7AF300BFD518 /* LoadingView.swift */; };
 		07F6153A28B5B483009641B2 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F6153928B5B483009641B2 /* LocationCell.swift */; };
 		07F6153C28B5B4B7009641B2 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F6153B28B5B4B7009641B2 /* AvatarView.swift */; };
 		07F6153E28B5BFB2009641B2 /* CustomModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F6153D28B5BFB2009641B2 /* CustomModifiers.swift */; };
@@ -66,6 +67,7 @@
 		07CE0A9A28A45B56007FADF5 /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
 		07D2EE9E28C3DDCF00FC4695 /* UIIamge+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIIamge+Extension.swift"; sourceTree = "<group>"; };
 		07DF0BB728CE251200BFD518 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		07DF0BBB28CF7AF300BFD518 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		07F6153928B5B483009641B2 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		07F6153B28B5B4B7009641B2 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		07F6153D28B5BFB2009641B2 /* CustomModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifiers.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				07B7A25328BC46E1003EEFC3 /* Buttons */,
 				07F6153B28B5B4B7009641B2 /* AvatarView.swift */,
 				07B7A25128BC3E8E003EEFC3 /* LogoView.swift */,
+				07DF0BBB28CF7AF300BFD518 /* LoadingView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				07F6154228B5C0E5009641B2 /* DDGButton.swift in Sources */,
 				074C164228B6F16800F93FF8 /* LocationManager.swift in Sources */,
 				07F6153C28B5B4B7009641B2 /* AvatarView.swift in Sources */,
+				07DF0BBC28CF7AF300BFD518 /* LoadingView.swift in Sources */,
 				074C163B28B6E1A700F93FF8 /* CKRecord+Extension.swift in Sources */,
 				07B7A25028BC3E33003EEFC3 /* OnboardingView.swift in Sources */,
 				07B2B4C828A326FA00E7FA30 /* DubDubGrubApp.swift in Sources */,

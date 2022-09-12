@@ -16,7 +16,6 @@ final class CloudKitManager {
     var userRecord: CKRecord?
     
     func getUserRecord() {
-        
         CKContainer.default().fetchUserRecordID { recordID, error in
             guard let recordID = recordID, error == nil else {
                 print(error!.localizedDescription)
@@ -52,17 +51,19 @@ final class CloudKitManager {
         }
     }
     
-    func batchSave(records: [CKRecord]) -> Void {
+    func batchSave(records: [CKRecord], completed: @escaping (Result<[CKRecord], Error>) -> Void) {
+        
         let operation = CKModifyRecordsOperation(recordsToSave: records)
         
-        operation.modifyRecordsResultBlock = { result in
-            switch result {
-            case .success:
-                print("Succesfully created and uploaded profile to CloudKit")
-            case .failure(let error):
-                print(error.localizedDescription)
+        operation.modifyRecordsCompletionBlock = { savedRecords, _, error in
+            guard let savedRecords = savedRecords, error == nil else {
+                completed(.failure(error!))
+                return
             }
+            
+            completed(.success(savedRecords))
         }
+        
         CKContainer.default().publicCloudDatabase.add(operation)
     }
     
@@ -70,7 +71,6 @@ final class CloudKitManager {
         
         CKContainer.default().publicCloudDatabase.fetch(withRecordID: id) { record, error in
             guard let record = record, error == nil else {
-                print(error!.localizedDescription)
                 completed(.failure(error!))
                 return
             }
