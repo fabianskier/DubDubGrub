@@ -34,7 +34,7 @@ final class ProfileViewModel: ObservableObject {
                 return
             }
             
-            CKContainer.default().privateCloudDatabase.fetch(withRecordID: recordID) { userRecord, error in
+            CKContainer.default().publicCloudDatabase.fetch(withRecordID: recordID) { userRecord, error in
                 guard let userRecord = userRecord, error == nil else {
                     print(error!.localizedDescription)
                     return
@@ -76,7 +76,7 @@ final class ProfileViewModel: ObservableObject {
                 return
             }
             
-            CKContainer.default().privateCloudDatabase.fetch(withRecordID: recordID) { userRecord, error in
+            CKContainer.default().publicCloudDatabase.fetch(withRecordID: recordID) { userRecord, error in
                 guard let userRecord = userRecord, error == nil else {
                     print(error!.localizedDescription)
                     return
