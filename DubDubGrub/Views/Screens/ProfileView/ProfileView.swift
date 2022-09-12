@@ -14,61 +14,64 @@ struct ProfileView: View {
     @FocusState var dismissKeyboard: Bool
     
     var body: some View {
-        VStack {
-            ZStack {
-                NameBackgroundView()
-                
-                HStack(spacing: 16) {
-                    ZStack {
-                        AvatarView(image: viewModel.avatar, size: 84)
-                        EditImageView()
-                    }
-                    .padding(.leading, 12)
-                    .onTapGesture { viewModel.isShowingPhotoPicker = true }
+        ZStack {
+            VStack {
+                ZStack {
+                    NameBackgroundView()
                     
-                    VStack(spacing: 1) {
-                        TextField("First Name", text: $viewModel.firstName).profileNameStyle()
-                        TextField("Last Name", text: $viewModel.lastName).profileNameStyle()
-                        TextField("Company Name", text: $viewModel.companyName)
+                    HStack(spacing: 16) {
+                        ZStack {
+                            AvatarView(image: viewModel.avatar, size: 84)
+                            EditImageView()
+                        }
+                        .padding(.leading, 12)
+                        .onTapGesture { viewModel.isShowingPhotoPicker = true }
+                        
+                        VStack(spacing: 1) {
+                            TextField("First Name", text: $viewModel.firstName).profileNameStyle()
+                            TextField("Last Name", text: $viewModel.lastName).profileNameStyle()
+                            TextField("Company Name", text: $viewModel.companyName)
+                        }
+                        .padding(.trailing, 16)
                     }
-                    .padding(.trailing, 16)
+                    .padding()
                 }
-                .padding()
-            }
-            
-            VStack(alignment: .leading, spacing: 8) {
-                CharacterRemainView(currentCount: viewModel.bio.count)
                 
-                TextEditor(text: $viewModel.bio)
-                    .focused($dismissKeyboard)
-                    .toolbar {
-                        ToolbarItem(placement: .keyboard) {
-                            HStack {
-                                Spacer()
-                                Button {
-                                    dismissKeyboard.toggle()
-                                } label: {
-                                    Image(systemName: "keyboard.chevron.compact.down")
-                                        .foregroundColor(Color("AccentColor"))
+                VStack(alignment: .leading, spacing: 8) {
+                    CharacterRemainView(currentCount: viewModel.bio.count)
+                    
+                    TextEditor(text: $viewModel.bio)
+                        .focused($dismissKeyboard)
+                        .toolbar {
+                            ToolbarItem(placement: .keyboard) {
+                                HStack {
+                                    Spacer()
+                                    Button {
+                                        dismissKeyboard.toggle()
+                                    } label: {
+                                        Image(systemName: "keyboard.chevron.compact.down")
+                                            .foregroundColor(Color("AccentColor"))
+                                    }
                                 }
                             }
                         }
-                    }
-                    .frame(height: 100)
-                    .overlay(RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.secondary, lineWidth: 1))
+                        .frame(height: 100)
+                        .overlay(RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.secondary, lineWidth: 1))
+                    
+                }
+                .padding(.horizontal, 20)
                 
+                Spacer()
+                
+                Button {
+                    viewModel.createProfile()
+                } label: {
+                    DDGButton(title: "Create Profile")
+                }
+                .padding(.bottom)
             }
-            .padding(.horizontal, 20)
-            
-            Spacer()
-            
-            Button {
-                                viewModel.createProfile()
-            } label: {
-                DDGButton(title: "Create Profile")
-            }
-            .padding(.bottom)
+            if viewModel.isLoading { LoadingView() }
         }
         .navigationTitle("Profile")
         .onAppear{ viewModel.getProfile() }
