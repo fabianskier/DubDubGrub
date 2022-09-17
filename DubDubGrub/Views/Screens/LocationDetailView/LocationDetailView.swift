@@ -12,57 +12,73 @@ struct LocationDetailView: View {
     @ObservedObject var viewModel: LocationDetailViewModel
     
     var body: some View {
-        VStack(spacing: 16) {
-            BannerImageView(image: viewModel.location.createBannerImage())
-            HStack {
-                AddressView(address: viewModel.location.address)
+        ZStack {
+            VStack(spacing: 16) {
+                BannerImageView(image: viewModel.location.createBannerImage())
+                HStack {
+                    AddressView(address: viewModel.location.address)
+                    Spacer()
+                }
+                .padding(.horizontal)
+                
+                DescriptionView(text: viewModel.location.description)
+                
+                ZStack {
+                    Capsule()
+                        .frame(height: 80)
+                        .foregroundColor(Color(uiColor: .secondarySystemBackground))
+                    
+                    HStack(spacing: 20) {
+                        Button {
+                            viewModel.getDirectionsToLocation()
+                        } label: {
+                            LocationActionButton(color: Color("AccentColor"), imageName: "location.fill")
+                        }
+                        Link(destination: URL(string: viewModel.location.websiteURL)!, label: {
+                            LocationActionButton(color: Color("AccentColor"), imageName: "network")
+                        })
+                        Button {
+                            viewModel.callLocation()
+                        } label: {
+                            LocationActionButton(color: Color("AccentColor"), imageName: "phone.fill")
+                        }
+                        Button {
+                            
+                        } label: {
+                            LocationActionButton(color: .red, imageName: "person.fill.checkmark")
+                        }
+                    }
+                }
+                .padding(.horizontal)
+                
+                Text("Who's Here?")
+                    .bold()
+                    .font(.title2)
+                
+                ScrollView {
+                    LazyVGrid(columns: viewModel.columns) {
+                        FirstNameAvatarView(image: PlaceholderImage.avatar, firstName: "Benjamin")
+                            .onTapGesture {
+                                viewModel.isShowingProfileModal = true
+                            }
+                    }
+                }
                 Spacer()
             }
-            .padding(.horizontal)
             
-            DescriptionView(text: viewModel.location.description)
-            
-            ZStack {
-                Capsule()
-                    .frame(height: 80)
-                    .foregroundColor(Color(uiColor: .secondarySystemBackground))
+            if viewModel.isShowingProfileModal {
+                Color(.systemBackground)
+                    .ignoresSafeArea()
+                    .opacity(0.9)
+                    .transition(AnyTransition.opacity.animation(.easeOut(duration: 0.35)))
+                    .zIndex(1)
                 
-                HStack(spacing: 20) {
-                    Button {
-                        viewModel.getDirectionsToLocation()
-                    } label: {
-                        LocationActionButton(color: Color("AccentColor"), imageName: "location.fill")
-                    }
-                    Link(destination: URL(string: viewModel.location.websiteURL)!, label: {
-                        LocationActionButton(color: Color("AccentColor"), imageName: "network")
-                    })
-                    Button {
-                        viewModel.callLocation()
-                    } label: {
-                        LocationActionButton(color: Color("AccentColor"), imageName: "phone.fill")
-                    }
-                    Button {
-                        
-                    } label: {
-                        LocationActionButton(color: .red, imageName: "person.fill.checkmark")
-                    }
-                }
+                ProfileModalView(isShowingProfileModal: $viewModel.isShowingProfileModal,
+                                 profile: DDGProfile(record: MockData.profile))
+                .transition(.opacity.combined(with: .slide))
+                .transition(AnyTransition.opacity.animation(.easeOut(duration: 0.35)))
+                .zIndex(2)
             }
-            .padding(.horizontal)
-            
-            Text("Who's Here?")
-                .bold()
-                .font(.title2)
-            
-            ScrollView {
-                LazyVGrid(columns: viewModel.columns) {
-                    FirstNameAvatarView(image: PlaceholderImage.avatar, firstName: "Benjamin")
-                    FirstNameAvatarView(image: PlaceholderImage.avatar, firstName: "Diana")
-                    FirstNameAvatarView(image: PlaceholderImage.avatar, firstName: "Oscar")
-                    FirstNameAvatarView(image: PlaceholderImage.avatar, firstName: "Yoshi")
-                }
-            }
-            Spacer()
         }
         .alert(item: $viewModel.alertItem, content: { alertItem in
             Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
