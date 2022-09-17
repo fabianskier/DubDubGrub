@@ -35,7 +35,7 @@ struct AlertContext {
     
     // MARK: - ProfileView Errors
     static let invalidProfile       = AlertItem(title: Text("Invalid Profile"),
-                                                message: Text("All fields are required as well as a profile photo. Your bio mus be < 100 characters\nPlease try again.."),
+                                                message: Text("All fields are required as well as a profile photo. Your bio must be =< 100 characters\nPlease try again.."),
                                                 dismissButton: .default(Text("Ok")))
     
     static let noUserRecord         = AlertItem(title: Text("No User Record"),
@@ -60,5 +60,10 @@ struct AlertContext {
     
     static let updateProfileFailure = AlertItem(title: Text("Profile Update Failed"),
                                                 message: Text("We were unable to update your profile at this time.\n Please try again later."),
+                                                dismissButton: .default(Text("Ok")))
+    
+    // MARK: - LocationDetailView Errors
+    static let invalidPhoneNumber   = AlertItem(title: Text("Invalid Phone Number"),
+                                                message: Text("The phone number for the locaton is invalid."),
                                                 dismissButton: .default(Text("Ok")))
 }
