@@ -43,7 +43,7 @@ struct LocationDetailView: View {
                             LocationActionButton(color: Color("AccentColor"), imageName: "phone.fill")
                         }
                         Button {
-                            
+                            viewModel.updateCheckInStatus(to: .checkedIn)
                         } label: {
                             LocationActionButton(color: .red, imageName: "person.fill.checkmark")
                         }
