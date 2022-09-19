@@ -18,6 +18,7 @@ final class ProfileViewModel: ObservableObject {
     @Published var avatar               = PlaceholderImage.avatar
     @Published var isShowingPhotoPicker = false
     @Published var isLoading            = false
+    @Published var isCheckedIn          = false
     @Published var alertItem: AlertItem?
     
     private var existingProfileRecord: CKRecord? {
@@ -33,6 +34,33 @@ final class ProfileViewModel: ObservableObject {
               avatar != PlaceholderImage.avatar,
               bio.count <= 100 else { return false }
         return true
+    }
+    
+    func checkOut() {
+        guard let profileID = CloudKitManager.shared.profileRecordID else {
+            alertItem = AlertContext.unableToGetProfile
+            return
+        }
+        
+        CloudKitManager.shared.fetchRecord(with: profileID) { result in
+            switch result {
+            case .success(let record):
+                record[DDGProfile.kIsCheckedIn] = nil
+                
+                CloudKitManager.shared.save(record: record) { [self] result in
+                    DispatchQueue.main.async { [self] in
+                        switch result {
+                        case .success(_):
+                            isCheckedIn = false
+                        case .failure(_):
+                            alertItem = AlertContext.uToGetCheckInOrOut
+                        }
+                    }
+                }
+            case .failure(_):
+                DispatchQueue.main.async { self.alertItem = AlertContext.uToGetCheckInOrOut }
+            }
+        }
     }
     
     func createProfile() {
@@ -63,6 +91,26 @@ final class ProfileViewModel: ObservableObject {
                     alertItem = AlertContext.createProfileSuccess
                 case .failure(_):
                     alertItem = AlertContext.createProfileFailure
+                    break
+                }
+            }
+        }
+    }
+    
+    func getCheckedInStatus() {
+        
+        guard let profileRecordID = CloudKitManager.shared.profileRecordID else { return }
+        
+        CloudKitManager.shared.fetchRecord(with: profileRecordID) { result in
+            DispatchQueue.main.async { [self] in
+                switch result {
+                case .success(let record):
+                    if let _ = record[DDGProfile.kIsCheckedIn] as? CKRecord.Reference {
+                        isCheckedIn = true
+                    } else {
+                        isCheckedIn = false
+                    }
+                case .failure(_):
                     break
                 }
             }
