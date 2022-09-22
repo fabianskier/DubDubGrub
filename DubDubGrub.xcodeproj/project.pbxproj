@@ -29,6 +29,7 @@
 		07B7A25028BC3E33003EEFC3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A24F28BC3E33003EEFC3 /* OnboardingView.swift */; };
 		07B7A25228BC3E8E003EEFC3 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A25128BC3E8E003EEFC3 /* LogoView.swift */; };
 		07B7A25528BC46FE003EEFC3 /* XDismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A25428BC46FE003EEFC3 /* XDismissButton.swift */; };
+		07BE772528DC090600E98516 /* LocationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BE772428DC090600E98516 /* LocationListViewModel.swift */; };
 		07CE0A9B28A45B56007FADF5 /* LocationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CE0A9A28A45B56007FADF5 /* LocationDetailView.swift */; };
 		07D2EE9F28C3DDCF00FC4695 /* UIIamge+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D2EE9E28C3DDCF00FC4695 /* UIIamge+Extension.swift */; };
 		07DF0BB828CE251200BFD518 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF0BB728CE251200BFD518 /* ProfileViewModel.swift */; };
@@ -68,6 +69,7 @@
 		07B7A24F28BC3E33003EEFC3 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		07B7A25128BC3E8E003EEFC3 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		07B7A25428BC46FE003EEFC3 /* XDismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDismissButton.swift; sourceTree = "<group>"; };
+		07BE772428DC090600E98516 /* LocationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListViewModel.swift; sourceTree = "<group>"; };
 		07CE0A9A28A45B56007FADF5 /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
 		07D2EE9E28C3DDCF00FC4695 /* UIIamge+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIIamge+Extension.swift"; sourceTree = "<group>"; };
 		07DF0BB728CE251200BFD518 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -209,6 +211,16 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		07BE772328DC08E000E98516 /* LocationListView */ = {
+			isa = PBXGroup;
+			children = (
+				07F6153928B5B483009641B2 /* LocationCell.swift */,
+				07B2B4E028A32A2300E7FA30 /* LocationListView.swift */,
+				07BE772428DC090600E98516 /* LocationListViewModel.swift */,
+			);
+			path = LocationListView;
+			sourceTree = "<group>";
+		};
 		07DF0BB628CE24F500BFD518 /* ProfileView */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,7 +235,6 @@
 			children = (
 				07F6153D28B5BFB2009641B2 /* CustomModifiers.swift */,
 				07F6154628B5C302009641B2 /* CustomViews */,
-				07F6154528B5C2F9009641B2 /* Cells */,
 				07F6154428B5C2BC009641B2 /* Screens */,
 			);
 			path = Views;
@@ -232,22 +243,14 @@
 		07F6154428B5C2BC009641B2 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				07BE772328DC08E000E98516 /* LocationListView */,
 				077A2AE728D5848700B73C5F /* LocationDetailView */,
 				07DF0BB628CE24F500BFD518 /* ProfileView */,
 				074C163E28B6E99C00F93FF8 /* LocationMapView */,
 				07B2B4DC28A329C800E7FA30 /* AppTabView.swift */,
-				07B2B4E028A32A2300E7FA30 /* LocationListView.swift */,
 				07B7A24F28BC3E33003EEFC3 /* OnboardingView.swift */,
 			);
 			path = Screens;
-			sourceTree = "<group>";
-		};
-		07F6154528B5C2F9009641B2 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				07F6153928B5B483009641B2 /* LocationCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		07F6154628B5C302009641B2 /* CustomViews */ = {
@@ -365,6 +368,7 @@
 				074C163D28B6E45100F93FF8 /* AlertItem.swift in Sources */,
 				077A2AEB28D67D1100B73C5F /* ProfileModalView.swift in Sources */,
 				07F6154028B5BFEB009641B2 /* View+Extension.swift in Sources */,
+				07BE772528DC090600E98516 /* LocationListViewModel.swift in Sources */,
 				07F6153A28B5B483009641B2 /* LocationCell.swift in Sources */,
 				07F6154228B5C0E5009641B2 /* DDGButton.swift in Sources */,
 				074C164228B6F16800F93FF8 /* LocationManager.swift in Sources */,
