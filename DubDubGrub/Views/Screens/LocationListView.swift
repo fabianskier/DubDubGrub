@@ -20,7 +20,17 @@ struct LocationListView: View {
                     }
                 }
             }.listStyle(PlainListStyle())
-            .navigationTitle("Grub Spots")
+                .navigationTitle("Grub Spots")
+                .onAppear {
+                    CloudKitManager.shared.getCheckedInProfilesDictionary { result in
+                        switch result {
+                        case .success(let checkedInProfiles):
+                            print(checkedInProfiles)
+                        case .failure(let failure):
+                            print("Error getting back dictionary")
+                        }
+                    }
+                }
         }
         .navigationViewStyle(.stack)
     }
