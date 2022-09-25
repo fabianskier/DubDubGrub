@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		070144AF28BDAB33001DF303 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070144AE28BDAB33001DF303 /* PhotoPicker.swift */; };
+		0720E7DB28DFDEE800D8FDF9 /* MapBalloon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0720E7DA28DFDEE800D8FDF9 /* MapBalloon.swift */; };
 		074C163628B6B00C00F93FF8 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074C163528B6B00C00F93FF8 /* CloudKitManager.swift */; };
 		074C163928B6B0AD00F93FF8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074C163828B6B0AD00F93FF8 /* Constants.swift */; };
 		074C163B28B6E1A700F93FF8 /* CKRecord+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074C163A28B6E1A700F93FF8 /* CKRecord+Extension.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		070144AE28BDAB33001DF303 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
+		0720E7DA28DFDEE800D8FDF9 /* MapBalloon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBalloon.swift; sourceTree = "<group>"; };
 		074C163528B6B00C00F93FF8 /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		074C163828B6B0AD00F93FF8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		074C163A28B6E1A700F93FF8 /* CKRecord+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKRecord+Extension.swift"; sourceTree = "<group>"; };
@@ -102,6 +104,14 @@
 				070144AE28BDAB33001DF303 /* PhotoPicker.swift */,
 			);
 			path = "UIKit Components";
+			sourceTree = "<group>";
+		};
+		0720E7D928DFDE1C00D8FDF9 /* Map Annotation */ = {
+			isa = PBXGroup;
+			children = (
+				0720E7DA28DFDEE800D8FDF9 /* MapBalloon.swift */,
+			);
+			path = "Map Annotation";
 			sourceTree = "<group>";
 		};
 		074C163328B6AFD600F93FF8 /* Utils */ = {
@@ -256,6 +266,7 @@
 		07F6154628B5C302009641B2 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				0720E7D928DFDE1C00D8FDF9 /* Map Annotation */,
 				070144AD28BDAB13001DF303 /* UIKit Components */,
 				07B7A25328BC46E1003EEFC3 /* Buttons */,
 				07F6153B28B5B4B7009641B2 /* AvatarView.swift */,
@@ -372,6 +383,7 @@
 				07F6153A28B5B483009641B2 /* LocationCell.swift in Sources */,
 				07F6154228B5C0E5009641B2 /* DDGButton.swift in Sources */,
 				074C164228B6F16800F93FF8 /* LocationManager.swift in Sources */,
+				0720E7DB28DFDEE800D8FDF9 /* MapBalloon.swift in Sources */,
 				07F6153C28B5B4B7009641B2 /* AvatarView.swift in Sources */,
 				07DF0BBC28CF7AF300BFD518 /* LoadingView.swift in Sources */,
 				074C163B28B6E1A700F93FF8 /* CKRecord+Extension.swift in Sources */,
