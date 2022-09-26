@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AppTabView: View {
     
+    @StateObject private var viewModel = AppTabViewModel()
+    
     init() { UITabBar.appearance().backgroundColor = UIColor.secondarySystemBackground }
     
     var body: some View {
@@ -17,8 +19,14 @@ struct AppTabView: View {
             LocationListView().tabItem{ Label("Locations", systemImage: "building") }
             NavigationView { ProfileView() }.tabItem{ Label("Profile", systemImage: "person") }
         }
-        .onAppear { CloudKitManager.shared.getUserRecord() } 
+        .onAppear {
+            CloudKitManager.shared.getUserRecord()
+            viewModel.runStartupChecks()
+        }
         .tint(Color("AccentColor"))
+        .sheet(isPresented: $viewModel.isShowingOnboardView, onDismiss: viewModel.checkIfLocationServicesIsEnabled) {
+            OnboardingView(isShowingOnboardingView: $viewModel.isShowingOnboardView)
+        }
     }
 }
 
