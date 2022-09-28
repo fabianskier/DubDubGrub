@@ -59,7 +59,7 @@ final class CloudKitManager {
     func getCheckedInProfiles(for locationID: CKRecord.ID, completed: @escaping (Result<[DDGProfile], Error>) -> Void) {
         let reference = CKRecord.Reference(recordID: locationID, action: .none)
         let predicate = NSPredicate(format: "isCheckedIn == %@", reference)
-        let query = CKQuery(recordType: RecordType.profile, predicate: predicate)
+        let query     = CKQuery(recordType: RecordType.profile, predicate: predicate)
         
         CKContainer.default().publicCloudDatabase.perform(query, inZoneWith: nil) { records, error in
             guard let records = records, error == nil else {
@@ -99,10 +99,10 @@ final class CloudKitManager {
     }
     
     func getCheckedInProfilesCount(completed: @escaping (Result<[CKRecord.ID: Int], Error>) -> Void) {
-        let predicate = NSPredicate(format: "isCheckedInNilCheck == 1")
-        let query = CKQuery(recordType: RecordType.profile, predicate: predicate)
-        let operation = CKQueryOperation(query: query)
-        operation.desiredKeys = [DDGProfile.kIsCheckedIn]
+        let predicate           = NSPredicate(format: "isCheckedInNilCheck == 1")
+        let query               = CKQuery(recordType: RecordType.profile, predicate: predicate)
+        let operation           = CKQueryOperation(query: query)
+        operation.desiredKeys   = [DDGProfile.kIsCheckedIn]
         
         var checkedInProfiles: [CKRecord.ID: Int] = [:]
         
@@ -129,7 +129,6 @@ final class CloudKitManager {
     }
     
     func batchSave(records: [CKRecord], completed: @escaping (Result<[CKRecord], Error>) -> Void) {
-        
         let operation = CKModifyRecordsOperation(recordsToSave: records)
         
         operation.modifyRecordsCompletionBlock = { savedRecords, _, error in
@@ -156,7 +155,6 @@ final class CloudKitManager {
     }
     
     func fetchRecord(with id: CKRecord.ID, completed: @escaping (Result<CKRecord, Error>) -> Void) {
-        
         CKContainer.default().publicCloudDatabase.fetch(withRecordID: id) { record, error in
             guard let record = record, error == nil else {
                 completed(.failure(error!))

@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    
     @Binding var isShowingOnboardingView: Bool
     
     var body: some View {
         VStack {
-            
             HStack {
                 Spacer()
                 Button {
@@ -47,7 +45,6 @@ struct OnboardingView_Previews: PreviewProvider {
 }
 
 struct OnboardingInfoView: View {
-    
     var imageName: String
     var title: String
     var description: String

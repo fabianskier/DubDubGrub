@@ -12,27 +12,22 @@ import CloudKit
 enum CheckInStatus { case checkedIn, checkedOut }
 
 final class LocationDetailViewModel: ObservableObject {
-    
     @Published var checkedInProfiles: [DDGProfile]  = []
     @Published var isShowingProfileModal            = false
     @Published var isCheckedIn                      = false
     @Published var isLoading                        = false
     @Published var alertItem: AlertItem?
     
-    let columns = [GridItem(.flexible()),
-                   GridItem(.flexible()),
-                   GridItem(.flexible())]
+    let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
     var location: DDGLocation
     
-    init(location: DDGLocation) {
-        self.location = location
-    }
+    init(location: DDGLocation) { self.location = location }
     
     func getDirectionsToLocation() {
-        let placemark = MKPlacemark(coordinate: location.location.coordinate)
-        let mapItem = MKMapItem(placemark: placemark)
-        mapItem.name = location.name
+        let placemark   = MKPlacemark(coordinate: location.location.coordinate)
+        let mapItem     = MKMapItem(placemark: placemark)
+        mapItem.name    = location.name
         
         mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking])
     }
@@ -46,7 +41,6 @@ final class LocationDetailViewModel: ObservableObject {
     }
     
     func getCheckedInStatus() {
-        
         guard let profileRecordID = CloudKitManager.shared.profileRecordID else { return }
         
         CloudKitManager.shared.fetchRecord(with: profileRecordID) { result in
@@ -66,7 +60,6 @@ final class LocationDetailViewModel: ObservableObject {
     }
     
     func updateCheckInStatus(to checkInStatus: CheckInStatus) {
-        
         guard let profileRecordID = CloudKitManager.shared.profileRecordID else {
             alertItem = AlertContext.unableToGetProfile
             return
@@ -85,7 +78,6 @@ final class LocationDetailViewModel: ObservableObject {
                 }
                 
                 CloudKitManager.shared.save(record: record) { result in
-                    
                     DispatchQueue.main.async { [self] in
                         switch result {
                         case .success(let record):

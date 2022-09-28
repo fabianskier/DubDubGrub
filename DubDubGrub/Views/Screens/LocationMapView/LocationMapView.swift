@@ -9,7 +9,6 @@ import SwiftUI
 import MapKit
 
 struct LocationMapView: View {
-    
     @EnvironmentObject private var locationManager: LocationManager
     @StateObject private var viewModel = LocationMapViewModel()
 
@@ -49,7 +48,6 @@ struct LocationMapView: View {
                 DispatchQueue.main.async {
                     viewModel.getLocations(for: locationManager)
                 }
-                
                 viewModel.getCheckedInCounts()
             }
         }
