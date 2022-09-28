@@ -10,7 +10,6 @@ import CloudKit
 enum ProfileContext { case create, update }
 
 final class ProfileViewModel: ObservableObject {
-    
     @Published var firstName            = ""
     @Published var lastName             = ""
     @Published var companyName          = ""
@@ -98,7 +97,6 @@ final class ProfileViewModel: ObservableObject {
     }
     
     func getCheckedInStatus() {
-        
         guard let profileRecordID = CloudKitManager.shared.profileRecordID else { return }
         
         CloudKitManager.shared.fetchRecord(with: profileRecordID) { result in
@@ -118,7 +116,6 @@ final class ProfileViewModel: ObservableObject {
     }
     
     func getProfile() {
-        
         guard let userRecord = CloudKitManager.shared.userRecord else {
             alertItem = AlertContext.noUserRecord
             return

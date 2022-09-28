@@ -8,16 +8,13 @@
 import CoreLocation
 
 final class AppTabViewModel: NSObject, ObservableObject {
-    
     @Published var isShowingOnboardView = false
     @Published var alertItem: AlertItem?
     
     var deviceLocationManager: CLLocationManager?
     let kHasSeenOnboardView = "hasSeenOnboardView"
     
-    var hasSeenOnboardView: Bool {
-        return UserDefaults.standard.bool(forKey: kHasSeenOnboardView)
-    }
+    var hasSeenOnboardView: Bool { return UserDefaults.standard.bool(forKey: kHasSeenOnboardView) }
     
     func runStartupChecks() {
         if !hasSeenOnboardView {
@@ -38,7 +35,6 @@ final class AppTabViewModel: NSObject, ObservableObject {
     }
     
     private func checkLocationAuthorization() {
-        
         guard let deviceLocationManager = deviceLocationManager else { return }
         
         switch deviceLocationManager.authorizationStatus {

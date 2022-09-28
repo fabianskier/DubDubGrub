@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct LocationCell: View {
-    
     var location: DDGLocation
     var profiles: [DDGProfile]
     
@@ -58,7 +57,6 @@ struct LocationCell_Previews: PreviewProvider {
 
 
 struct AdditionalProfilesView: View {
-    
     var number: Int
     
     var body: some View {

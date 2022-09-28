@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct LocationDetailView: View {
-    
     @ObservedObject var viewModel: LocationDetailViewModel
     
     var body: some View {
@@ -79,7 +78,6 @@ struct LocationDetailView: View {
                     }
                     if viewModel.isLoading { LoadingView() }
                 }
-
                 Spacer()
             }
             
@@ -118,7 +116,6 @@ struct LocationDetailView_Previews: PreviewProvider {
 }
 
 struct LocationActionButton: View {
-    
     let color: Color
     let imageName: String
     
@@ -138,7 +135,6 @@ struct LocationActionButton: View {
 }
 
 struct FirstNameAvatarView: View {
-    
     var profile: DDGProfile
     
     var body: some View {
@@ -154,7 +150,6 @@ struct FirstNameAvatarView: View {
 }
 
 struct BannerImageView: View {
-    
     var image: UIImage
     
     var body: some View {
@@ -166,7 +161,6 @@ struct BannerImageView: View {
 }
 
 struct AddressView: View {
-    
     var address: String
     
     var body: some View {
@@ -176,8 +170,8 @@ struct AddressView: View {
 }
 
 struct DescriptionView: View {
-    
     var text: String
+    
     var body: some View {
         Text(text)
             .lineLimit(3)

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct LocationListView: View {
-    
     @EnvironmentObject private var locationManager: LocationManager
     @StateObject private var viewModel = LocationListViewModel()
     

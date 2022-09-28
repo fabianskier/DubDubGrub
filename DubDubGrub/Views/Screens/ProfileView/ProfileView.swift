@@ -9,7 +9,6 @@ import SwiftUI
 import CloudKit
 
 struct ProfileView: View {
-    
     @StateObject private var viewModel = ProfileViewModel()
     @FocusState var dismissKeyboard: Bool
     
@@ -134,7 +133,6 @@ struct EditImageView: View {
 }
 
 struct CharacterRemainView: View {
-    
     var currentCount: Int
     
     var body: some View {

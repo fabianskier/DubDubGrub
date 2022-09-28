@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AppTabView: View {
-    
     @StateObject private var viewModel = AppTabViewModel()
     
     init() { UITabBar.appearance().backgroundColor = UIColor.secondarySystemBackground }

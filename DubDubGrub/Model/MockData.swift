@@ -28,7 +28,6 @@ struct MockData {
         record[DDGProfile.kCompanyName]     = "@anskitech"
         record[DDGProfile.kBio]             = "Enthusiastic software developer, F1 and ski lover."
 
-        
         return record
     }
 }

@@ -9,7 +9,6 @@ import MapKit
 import CloudKit
 
 final class LocationMapViewModel: ObservableObject {
-    
     @Published var checkedInProfiles: [CKRecord.ID: Int] = [:]
     @Published var isShowingDetailView = false
     @Published var alertItem: AlertItem?
