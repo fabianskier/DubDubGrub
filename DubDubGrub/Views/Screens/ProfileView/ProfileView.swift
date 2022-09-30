@@ -91,6 +91,7 @@ struct ProfileView: View {
             if viewModel.isLoading { LoadingView() }
         }
         .navigationTitle("Profile")
+        .navigationBarTitleDisplayMode(DeviceTypes.isiPhone8Standard ? .inline : .automatic)
         .onAppear{
             viewModel.getProfile()
             viewModel.getCheckedInStatus()
