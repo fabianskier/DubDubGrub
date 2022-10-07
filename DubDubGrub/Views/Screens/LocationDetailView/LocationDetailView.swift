@@ -32,18 +32,22 @@ struct LocationDetailView: View {
                             viewModel.getDirectionsToLocation()
                         } label: {
                             LocationActionButton(color: Color("AccentColor"), imageName: "location.fill")
-                                .accessibilityLabel(Text("Get directions"))
                         }
+                        .accessibilityLabel(Text("Get directions"))
+                        
                         Link(destination: URL(string: viewModel.location.websiteURL)!, label: {
                             LocationActionButton(color: Color("AccentColor"), imageName: "network")
-                                .accessibilityLabel(Text("Go to website"))
                         })
+                        .accessibilityRemoveTraits(.isButton)
+                        .accessibilityLabel(Text("Go to website"))
+                        
                         Button {
                             viewModel.callLocation()
                         } label: {
                             LocationActionButton(color: Color("AccentColor"), imageName: "phone.fill")
                                 .accessibilityLabel(Text("Call location"))
                         }
+
                         if let _ = CloudKitManager.shared.profileRecordID {
                             Button {
                                 viewModel.updateCheckInStatus(to: viewModel.isCheckedIn ? .checkedOut : .checkedIn)
@@ -61,7 +65,7 @@ struct LocationDetailView: View {
                 Text("Who's Here?")
                     .bold()
                     .font(.title2)
-                    .accessibility(addTraits: .isHeader)
+                    .accessibilityAddTraits(.isHeader)
                     .accessibilityLabel(Text("Who's Here? \(viewModel.checkedInProfiles.count) checked in"))
                     .accessibilityHint(Text("Bottom section is scrollable"))
                 
@@ -78,9 +82,11 @@ struct LocationDetailView: View {
                                 ForEach(viewModel.checkedInProfiles) { profile in
                                     FirstNameAvatarView(profile: profile)
                                         .accessibilityElement(children: .ignore)
+                                        .accessibilityAddTraits(.isButton)
+                                        .accessibilityHint(Text("Show's \(profile.firstName) profile pop up."))
                                         .accessibilityLabel(Text("\(profile.firstName) \(profile.lastName)"))
                                         .onTapGesture {
-                                            viewModel.isShowingProfileModal = true
+                                            viewModel.selectedProfile = profile
                                         }
                                 }
                             }
@@ -90,6 +96,7 @@ struct LocationDetailView: View {
                 }
                 Spacer()
             }
+            .accessibilityHidden(viewModel.isShowingProfileModal)
             
             if viewModel.isShowingProfileModal {
                 Color(.systemBackground)
@@ -97,9 +104,11 @@ struct LocationDetailView: View {
                     .opacity(0.9)
                     .transition(AnyTransition.opacity.animation(.easeOut(duration: 0.35)))
                     .zIndex(1)
+                    .accessibilityHidden(true)
                 
                 ProfileModalView(isShowingProfileModal: $viewModel.isShowingProfileModal,
-                                 profile: DDGProfile(record: MockData.profile))
+                                 profile: viewModel.selectedProfile!)
+                .accessibilityAddTraits(.isModal)
                 .transition(.opacity.combined(with: .slide))
                 .transition(AnyTransition.opacity.animation(.easeOut(duration: 0.35)))
                 .zIndex(2)
