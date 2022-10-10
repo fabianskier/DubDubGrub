@@ -99,7 +99,7 @@ struct LocationDetailView: View {
             .accessibilityHidden(viewModel.isShowingProfileModal)
             
             if viewModel.isShowingProfileModal {
-                Color(.systemBackground)
+                Color(.black)
                     .ignoresSafeArea()
                     .opacity(0.9)
                     .transition(AnyTransition.opacity.animation(.easeOut(duration: 0.35)))
@@ -129,8 +129,15 @@ struct LocationDetailView: View {
 struct LocationDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            LocationDetailView(viewModel: LocationDetailViewModel(location: DDGLocation(record: MockData.location)))
+            LocationDetailView(viewModel: LocationDetailViewModel(location: DDGLocation(record: MockData.chipotle)))
         }
+        .preferredColorScheme(.dark)
+        .environment(\.sizeCategory, .extraExtraExtraLarge)
+        
+        NavigationView {
+            LocationDetailView(viewModel: LocationDetailViewModel(location: DDGLocation(record: MockData.chipotle))).embedInScrollView()
+        }
+        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }
 
@@ -194,8 +201,8 @@ struct DescriptionView: View {
     
     var body: some View {
         Text(text)
-            .lineLimit(3)
             .minimumScaleFactor(0.75)
+            .fixedSize(horizontal: false, vertical: true)
             .padding(.horizontal)
     }
 }
