@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LocationDetailView: View {
     @ObservedObject var viewModel: LocationDetailViewModel
+    @Environment(\.sizeCategory) var sizeCategory
     
     var body: some View {
         ZStack {
@@ -78,7 +79,7 @@ struct LocationDetailView: View {
                             .padding(.top, 30)
                     } else {
                         ScrollView {
-                            LazyVGrid(columns: viewModel.columns) {
+                            LazyVGrid(columns: viewModel.determineColumns(for: sizeCategory)) {
                                 ForEach(viewModel.checkedInProfiles) { profile in
                                     FirstNameAvatarView(profile: profile)
                                         .accessibilityElement(children: .ignore)
@@ -161,11 +162,14 @@ struct LocationActionButton: View {
 }
 
 struct FirstNameAvatarView: View {
+    @Environment(\.sizeCategory) var sizeCategory
     var profile: DDGProfile
     
     var body: some View {
         VStack {
-            AvatarView(image: profile.createAvatarImage(), size: 64)
+            AvatarView(image: profile.createAvatarImage(),
+                       size:  sizeCategory >= .accessibilityMedium ? 100 : 64)
+            
             Text(profile.firstName)
                 .bold()
                 .lineLimit(1)
