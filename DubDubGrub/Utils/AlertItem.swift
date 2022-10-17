@@ -40,6 +40,11 @@ struct AlertContext {
                                                 message: Text("Unable to get the number of people checked into each location. Please check your internet connection and try again."),
                                                 dismissButton: .default(Text("Ok")))
     
+    //MARK: - LocationListView Errors
+    static let uCheckedInProfiles   = AlertItem(title: Text("Unable to Get Profiles"),
+                                                            message: Text("Unable to retrieve checked in profiles to all locations.\nPlease try again."),
+                                                            dismissButton: .default(Text("Ok")))
+    
     
     // MARK: - ProfileView Errors
     static let invalidProfile       = AlertItem(title: Text("Invalid Profile"),
@@ -86,4 +91,6 @@ struct AlertContext {
     static let uGetCheckInProfiles  = AlertItem(title: Text("Server Error"),
                                                 message: Text("We are unable to get users checked into this location at this time.\n Please try again later."),
                                                 dismissButton: .default(Text("Ok")))
+    
+    
 }
