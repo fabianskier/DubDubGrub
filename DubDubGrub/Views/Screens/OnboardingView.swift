@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @Binding var isShowingOnboardingView: Bool
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack {
             HStack {
                 Spacer()
                 Button {
-                    isShowingOnboardingView = false
+                    presentationMode.wrappedValue.dismiss()
                 } label: {
                     XDismissButton()
                 }
@@ -40,11 +40,11 @@ struct OnboardingView: View {
 
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingView(isShowingOnboardingView: .constant(true))
+        OnboardingView()
     }
 }
 
-struct OnboardingInfoView: View {
+fileprivate struct OnboardingInfoView: View {
     var imageName: String
     var title: String
     var description: String

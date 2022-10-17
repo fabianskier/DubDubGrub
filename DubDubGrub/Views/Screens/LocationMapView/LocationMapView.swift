@@ -15,23 +15,21 @@ struct LocationMapView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            Map(coordinateRegion: $viewModel.region,showsUserLocation: true, annotationItems: locationManager.locations) { location in
+            Map(coordinateRegion: $viewModel.region,
+                showsUserLocation: true,
+                annotationItems: locationManager.locations) { location in
                 MapAnnotation(coordinate: location.location.coordinate, anchorPoint: CGPoint(x: 0.5, y: 0.75)) {
                     DDGAnnotation(location: location,
                                   number: viewModel.checkedInProfiles[location.id, default: 0])
-                    .accessibilityLabel(Text("Map Pin \(location.name) \(viewModel.checkedInProfiles[location.id, default: 0]) people checked in."))
                     .onTapGesture {
                         locationManager.selectedLocation = location
                         viewModel.isShowingDetailView = true
                     }
                 }
             }
-            .ignoresSafeArea()
+                .ignoresSafeArea()
             
-            VStack {
-                LogoView(frameWidth: 125).shadow(radius: 10)
-                Spacer()
-            }
+            LogoView(frameWidth: 125).shadow(radius: 10)
         }
         .sheet(isPresented: $viewModel.isShowingDetailView) {
             NavigationView {
@@ -40,9 +38,7 @@ struct LocationMapView: View {
             }
             .accentColor(Color("AccentColor"))
         }
-        .alert(item: $viewModel.alertItem, content: { alertItem in
-            Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
-        })
+        .alert(item: $viewModel.alertItem, content: { $0.alert })
         .onAppear {
             if locationManager.locations.isEmpty {
                 DispatchQueue.main.async {
