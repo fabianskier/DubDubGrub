@@ -52,12 +52,12 @@ struct LocationDetailView: View {
                         if let _ = CloudKitManager.shared.profileRecordID {
                             Button {
                                 viewModel.updateCheckInStatus(to: viewModel.isCheckedIn ? .checkedOut : .checkedIn)
-                                playHaptic()
                             } label: {
                                 LocationActionButton(color: viewModel.isCheckedIn ? .grubRed : Color("AccentColor") ,
                                                      imageName: viewModel.isCheckedIn ? "person.fill.xmark" : "person.fill.checkmark")
                                 .accessibilityLabel(Text(viewModel.isCheckedIn ? "Check out of location" : "Check into location"))
                             }
+                            .disabled(viewModel.isLoading)
                         }
                     }
                 }
@@ -87,7 +87,7 @@ struct LocationDetailView: View {
                                         .accessibilityHint(Text("Show's \(profile.firstName) profile pop up."))
                                         .accessibilityLabel(Text("\(profile.firstName) \(profile.lastName)"))
                                         .onTapGesture {
-                                            viewModel.show(profile: profile, in: sizeCategory)
+                                            viewModel.show(profile, in: sizeCategory)
                                         }
                                 }
                             }
@@ -95,7 +95,6 @@ struct LocationDetailView: View {
                     }
                     if viewModel.isLoading { LoadingView() }
                 }
-                Spacer()
             }
             .accessibilityHidden(viewModel.isShowingProfileModal)
             
@@ -126,9 +125,7 @@ struct LocationDetailView: View {
             }
             .accentColor(Color("AccentColor"))
         }
-        .alert(item: $viewModel.alertItem, content: { alertItem in
-            Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
-        })
+        .alert(item: $viewModel.alertItem, content: { $0.alert })
         .navigationTitle(viewModel.location.name)
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -137,19 +134,12 @@ struct LocationDetailView: View {
 struct LocationDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            LocationDetailView(viewModel: LocationDetailViewModel(location: DDGLocation(record: MockData.chipotle)))
+            LocationDetailView(viewModel: LocationDetailView.LocationDetailViewModel(location: DDGLocation(record: MockData.chipotle)))
         }
-        .preferredColorScheme(.dark)
-        .environment(\.sizeCategory, .extraExtraExtraLarge)
-        
-        NavigationView {
-            LocationDetailView(viewModel: LocationDetailViewModel(location: DDGLocation(record: MockData.chipotle))).embedInScrollView()
-        }
-        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }
 
-struct LocationActionButton: View {
+fileprivate struct LocationActionButton: View {
     let color: Color
     let imageName: String
     
@@ -168,7 +158,7 @@ struct LocationActionButton: View {
     }
 }
 
-struct FirstNameAvatarView: View {
+fileprivate struct FirstNameAvatarView: View {
     @Environment(\.sizeCategory) var sizeCategory
     var profile: DDGProfile
     
@@ -186,7 +176,7 @@ struct FirstNameAvatarView: View {
     }
 }
 
-struct BannerImageView: View {
+fileprivate struct BannerImageView: View {
     var image: UIImage
     
     var body: some View {
@@ -198,7 +188,7 @@ struct BannerImageView: View {
     }
 }
 
-struct AddressView: View {
+fileprivate struct AddressView: View {
     var address: String
     
     var body: some View {
@@ -207,7 +197,7 @@ struct AddressView: View {
     }
 }
 
-struct DescriptionView: View {
+fileprivate struct DescriptionView: View {
     var text: String
     
     var body: some View {
