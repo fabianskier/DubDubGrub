@@ -20,7 +20,7 @@ extension LocationListView {
                     case .success(let checkedInProfiles):
                         self.checkedInProfiles = checkedInProfiles
                     case .failure(_):
-                        alertItem = AlertContext.uCheckedInProfiles
+                        alertItem = AlertContext.unableToGetAllCheckedInProfiles
                     }
                 }
             }
@@ -35,9 +35,9 @@ extension LocationListView {
         
         @ViewBuilder func createLocationDetailView(for location: DDGLocation, in sizeCategory: ContentSizeCategory) -> some View {
             if sizeCategory >= .accessibilityMedium {
-                LocationDetailView(viewModel: LocationDetailView.LocationDetailViewModel(location: location)).embedInScrollView()
+                LocationDetailView(viewModel: LocationDetailViewModel(location: location)).embedInScrollView()
             } else {
-                LocationDetailView(viewModel: LocationDetailView.LocationDetailViewModel(location: location))
+                LocationDetailView(viewModel: LocationDetailViewModel(location: location))
             }
         }
     }
