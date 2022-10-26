@@ -13,7 +13,6 @@
 		0720E7E028E14CBA00D8FDF9 /* AppTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0720E7DF28E14CBA00D8FDF9 /* AppTabViewModel.swift */; };
 		074C163628B6B00C00F93FF8 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074C163528B6B00C00F93FF8 /* CloudKitManager.swift */; };
 		074C163928B6B0AD00F93FF8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074C163828B6B0AD00F93FF8 /* Constants.swift */; };
-		074C163B28B6E1A700F93FF8 /* CKRecord+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074C163A28B6E1A700F93FF8 /* CKRecord+Extension.swift */; };
 		074C163D28B6E45100F93FF8 /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074C163C28B6E45100F93FF8 /* AlertItem.swift */; };
 		074C164028B6E9B300F93FF8 /* LocationMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074C163F28B6E9B300F93FF8 /* LocationMapViewModel.swift */; };
 		074C164228B6F16800F93FF8 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074C164128B6F16800F93FF8 /* LocationManager.swift */; };
@@ -56,7 +55,6 @@
 		0720E7DF28E14CBA00D8FDF9 /* AppTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabViewModel.swift; sourceTree = "<group>"; };
 		074C163528B6B00C00F93FF8 /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		074C163828B6B0AD00F93FF8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		074C163A28B6E1A700F93FF8 /* CKRecord+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKRecord+Extension.swift"; sourceTree = "<group>"; };
 		074C163C28B6E45100F93FF8 /* AlertItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
 		074C163F28B6E9B300F93FF8 /* LocationMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapViewModel.swift; sourceTree = "<group>"; };
 		074C164128B6F16800F93FF8 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -227,7 +225,6 @@
 			children = (
 				07F6153F28B5BFEB009641B2 /* View+Extension.swift */,
 				07B2B4D928A3296700E7FA30 /* Color+Extension.swift */,
-				074C163A28B6E1A700F93FF8 /* CKRecord+Extension.swift */,
 				07B7A24D28B9C5D5003EEFC3 /* CKAsset+Extension.swift */,
 				07D2EE9E28C3DDCF00FC4695 /* UIIamge+Extension.swift */,
 			);
@@ -412,7 +409,6 @@
 				07E89F9028FCD4AB00DE13A5 /* ProfileSheetView.swift in Sources */,
 				07F6153C28B5B4B7009641B2 /* AvatarView.swift in Sources */,
 				07DF0BBC28CF7AF300BFD518 /* LoadingView.swift in Sources */,
-				074C163B28B6E1A700F93FF8 /* CKRecord+Extension.swift in Sources */,
 				07B7A25028BC3E33003EEFC3 /* OnboardingView.swift in Sources */,
 				07B2B4C828A326FA00E7FA30 /* DubDubGrubApp.swift in Sources */,
 			);
