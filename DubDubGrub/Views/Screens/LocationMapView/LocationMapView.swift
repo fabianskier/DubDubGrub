@@ -11,7 +11,7 @@ import MapKit
 struct LocationMapView: View {
     @EnvironmentObject private var locationManager: LocationManager
     @StateObject private var viewModel = LocationMapViewModel()
-    @Environment(\.sizeCategory) var sizeCategory
+    @Environment(\.dynamicTypeSize) var dynamicTypeSize
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -27,13 +27,14 @@ struct LocationMapView: View {
                     }
                 }
             }
+                .accentColor(.grubRed)
                 .ignoresSafeArea()
             
             LogoView(frameWidth: 125).shadow(radius: 10)
         }
         .sheet(isPresented: $viewModel.isShowingDetailView) {
             NavigationView {
-                viewModel.createLocationDetailView(for: locationManager.selectedLocation!, in: sizeCategory)
+                viewModel.createLocationDetailView(for: locationManager.selectedLocation!, in: dynamicTypeSize)
                     .toolbar { Button("Dismiss", action: { viewModel.isShowingDetailView = false }) }
             }
             .accentColor(Color("AccentColor"))
