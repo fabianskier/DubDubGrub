@@ -20,10 +20,10 @@ struct AppTabView: View {
         }
         .onAppear {
             CloudKitManager.shared.getUserRecord()
-            viewModel.runStartupChecks()
+            viewModel.checkIfHasSeenOnboard()
         }
         .tint(Color("AccentColor"))
-        .sheet(isPresented: $viewModel.isShowingOnboardView, onDismiss: viewModel.checkIfLocationServicesIsEnabled) {
+        .sheet(isPresented: $viewModel.isShowingOnboardView) {
             OnboardingView()
         }
     }
